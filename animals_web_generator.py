@@ -21,19 +21,21 @@ def serialize_animal(animal):
     if name_value:
         single_animal_output += f'    <div class="card__title">{name_value}</div>\n'
     
-    single_animal_output += '    <p class="card__text">\n'
+    single_animal_output += '    <div class="card__text">\n'
+    single_animal_output += '       <ul>\n'
+    single_animal_output += '          <p> </p>\n'
     
     scientific_name_value = animal.get("taxonomy", {}).get("scientific_name", "")
     if scientific_name_value:
-        single_animal_output += f"        <strong>Scientific name:</strong> {scientific_name_value}<br/>\n"
+        single_animal_output += f'          <li class="single_info_text_row"><strong>Scientific name:</strong> {scientific_name_value}</li>\n'
         
     color_value = animal.get("characteristics", {}).get("color", "")
     if color_value:
-        single_animal_output += f"        <strong>Color:</strong> {color_value}<br/>\n"
+        single_animal_output += f'          <li class="single_info_text_row"><strong>Color:</strong> {color_value}</li>\n'
         
     diet_value = animal.get("characteristics", {}).get("diet", "")
     if diet_value:
-        single_animal_output += f"        <strong>Diet:</strong> {diet_value}<br/>\n"
+        single_animal_output += f'          <li class="single_info_text_row"><strong>Diet:</strong> {diet_value}</li>\n'
     
     locations_value = animal.get("locations", [])
     if locations_value:
@@ -42,13 +44,15 @@ def serialize_animal(animal):
         else:
             locations_str = ", ".join(locations_value[:-1]) + " and " + locations_value[-1]
         
-        single_animal_output += f"        <strong>Location:</strong> {locations_str}<br/>\n"
+        single_animal_output += f'          <li class="single_info_text_row"><strong>Location:</strong> {locations_str}</li>\n'
     
     type_value = animal.get("characteristics", {}).get("type", "")
     if type_value:
-        single_animal_output += f"        <strong>Type:</strong> {type_value}<br/>\n"
+        single_animal_output += f'          <li class="single_info_text_row"><strong>Type:</strong> {type_value}</li>\n'
     
-    single_animal_output += '    </p>\n'
+    single_animal_output += '       </ul>\n'
+    
+    single_animal_output += '   </div>\n'
     
     single_animal_output += '</li>\n'
 
