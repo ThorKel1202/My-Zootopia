@@ -11,21 +11,23 @@ def make_string():
     animals_data = load_data("animals_data.json")
     output = ''
     for animal in animals_data:
+        output += '<li class="cards__item">'
         name_value = animal.get("name")
         if name_value:
-            output += f"\nName: {name_value}\n"
+            output += f"\nName: {name_value}<br/>\n"
         
         diet_value = animal.get("characteristics", {}).get("diet", "")
         if diet_value:
-            output += f"Diet: {diet_value}\n"
+            output += f"Diet: {diet_value}<br/>\n"
         
         locations_value = animal.get("locations", [])
         if locations_value:
-            output += f"Location: {locations_value[0]}\n"
+            output += f"Location: {locations_value[0]}<br/>\n"
         
         type_value = animal.get("characteristics", {}).get("type", "")
         if type_value:
-            output += f"Type: {type_value}\n"
+            output += f"Type: {type_value}<br/>\n"
+        output += '</li>\n'
             
     return output
             
